@@ -14,8 +14,19 @@ public class MergeSort {
         for(int i=0; i<n ;i++){
             arr[i] = sc.nextInt();
         }
+        //printing unsorted array
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
 
+        //calling merge sort function
         mergesort(arr,0,n-1);
+
+        System.out.println();
+        //printing sorted array
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
     }
 
     static void mergesort(int[] arr,int l,int r){
@@ -31,20 +42,38 @@ public class MergeSort {
 
     static void merge(int[] arr, int l, int mid,int r){
 
-        int[] res = new int[r-l];  /* result array containing merged result of two sorted subarrays*/
+        int[] res = new int[arr.length];  /* result array containing merged result of two sorted sub-arrays*/
 
-        int i = l;      /* starting index of second sorted subarray */
-        int j = mid+1;  /* starting index of second sorted subarray */
-        int k = l;      /* strarting index of sorted result array */
+        int i = l;      /* starting index of second sorted sub-array */
+        int j = mid+1;  /* starting index of second sorted sub-array */
+        int k = l;      /* starting index of sorted result array */
 
         /*
         // USe a while loop to pick and place
         // appropriate elements in array res till any
-        // one of the subarrays exhausts.
+        // one of the sub-arrays exhausts.
         */
 
-        while(i<mid && j<r){
+        while(i<=mid && j<=r){
+            if(arr[i]<arr[j]){
+                res[k++] = arr[i++];
+            }else{
+                res[k++] = arr[j++];
+            }
+        }
 
+        if(i<=mid){
+            while(i<=mid){
+                res[k++] = arr[i++];
+            }
+        }else{
+            while(j<=r){
+                res[k++] = arr[j++];
+            }
+        }
+
+        for(int index=l;index<=r;index++){
+            arr[index] = res[index];
         }
 
     }
