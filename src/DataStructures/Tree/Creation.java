@@ -22,8 +22,6 @@ public class Creation {
         root.left.right = new Node(5);
 
         System.out.println(root.data);
-
-        //
     }
 }
 
