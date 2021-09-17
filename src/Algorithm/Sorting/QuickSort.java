@@ -15,6 +15,7 @@ public class QuickSort {
             arr[i] = sc.nextInt();
         }
         //printing unsorted array
+        System.out.println("Unsorted array is :");
         for(int i=0;i<n;i++){
             System.out.print(arr[i]+" ");
         }
@@ -24,6 +25,7 @@ public class QuickSort {
 
         System.out.println();
         //printing sorted array
+        System.out.println("Sorted array is :");
         for(int i=0;i<n;i++){
             System.out.print(arr[i]+" ");
         }
