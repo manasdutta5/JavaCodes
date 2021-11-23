@@ -1,5 +1,8 @@
 package DataStructures.Tree;
 
+
+//do vertical order traversal first
+
 import java.util.*;
 public class TopViewOfBST {
 

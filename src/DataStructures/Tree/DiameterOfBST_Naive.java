@@ -4,6 +4,7 @@ package DataStructures.Tree;
 //giving wrong output for some inputs in gfg
 
 public class DiameterOfBST_Naive {
+
     static class Node{
         int data;
         Node left;

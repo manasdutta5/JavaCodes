@@ -1,0 +1,12 @@
+package DataStructures.Tree;
+/*
+//  Problem Link: https://practice.geeksforgeeks.org/problems/binary-tree-to-bst/1/?category[]=Tree&category[]=Tree&problemStatus=unsolved&page=2&query=category[]TreeproblemStatusunsolvedpage2category[]Tree
+//  Video Solution : https://youtu.be/8AnntMKIWlQ
+// Explanation:
+// In Inorder traversal of a BSt, nodes are in sorted order
+// So we will store all the nodes of the given tree in a vector or arraylist and sort them
+// then we will iterate the tree again and change current nodes with the nodes in the sorted arraylist
+// this modified tree is our BST
+ */
+
+
