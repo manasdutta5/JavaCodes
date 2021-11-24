@@ -1,0 +1,57 @@
+package DataStructures.Tree;
+
+/*
+//  Problem link: https://practice.geeksforgeeks.org/problems/make-binary-tree/1/?category[]=Tree&category[]=Tree&problemStatus=unsolved&page=1&query=category[]TreeproblemStatusunsolvedpage1category[]Tree#
+//  Video Solution: https://youtu.be/EKCITexIVLM
+ */
+
+
+import java.util.*;
+public class BinaryTreeFromLinkedList {
+
+    //Tree class
+    class Tree{
+        int data;
+        Tree left;
+        Tree right;
+
+        tree(int data){
+        this.data = data;
+        left = null;
+        right = null;
+        }
+    }
+
+    //LinkedList
+    class Node{
+        int data;
+        Node next;
+        Node(int data){
+        this.data = data;
+        next = null;
+        }
+    }
+
+    //function to create tree
+
+    //Function to make binary tree from linked list.
+        public static Tree convert(Node head, Tree node) {
+            // add code here.
+            ArrayList<Tree> nodes = new ArrayList<>();
+            Node tempHead = head;
+
+            while(tempHead != null){
+                nodes.add(new Tree(tempHead.data));
+                tempHead = tempHead.next;
+            }
+
+            Tree root = nodes.get(0);
+
+            for(int i=0;i<nodes.size()/2;i++){
+                if((2*i + 1)< nodes.size()) nodes.get(i).left = nodes.get(2*i+1);
+                if((2*i + 2)< nodes.size()) nodes.get(i).right = nodes.get(2*i+2);
+            }
+
+            return root;
+        }
+}

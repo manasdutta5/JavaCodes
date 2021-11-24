@@ -4,52 +4,42 @@ import java.util.*;
 
 public class Random {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N=sc.nextInt();
-        int M=sc.nextInt();
-        int[] start=new int[M];
-        int[] end=new int[M];
 
-        for(int i=0;i<M;i++){
-            start[i] = sc.nextInt();
-        }
+        System.out.println(minSets("1234",4,4));
 
-        for(int i=0;i<M;i++){
-            end[i] = sc.nextInt();
-        }
-
-        System.out.println(check(N,M,start,end));
     }
 
-    static int check(int N, int M, int[] start, int[] end){
-        HashMap<Integer,Integer> ht = new HashMap<>();
+    static int minSets(String input1, int input2,int input3)
+    {
+        String s = input1;
+        int y = input2;
+        int cnt = 0;
+        int num = 0;
 
-        for(int i=0;i<M ;i++){
-            if(ht.containsKey(end[i])==true){
-                ht.put(end[i], ht.get(end[i])+1);
-            }
+        int l = s.length();
+        boolean f = false;
+
+        for (int i = 0; i < l; i++)
+        {
+            num = num * 10 + (s.charAt(i) - '0');
+            if (num <= y)
+                f = true;
             else
             {
-                ht.put(end[i],1);
+                if (f)
+                    cnt += 1;
+                num = s.charAt(i) - '0';
+                f = false;
+
+                if (num <= y)
+                    f = true;
+                else
+                    num = 0;
             }
         }
 
-        int c=0;
-        for(Integer val: ht.values()){
-            if(val > c) c=val;
-        }
-
-
-//        System.out.println(ht);
-//        System.out.println(c);
-
-        Arrays.sort(start);
-        Arrays.sort(end);
-
-        if(start.equals(end)) return 3;
-        else if(c==4) return 2;
-        else if(c==2) return 3;
-        else if(c==1) return 1;
-        else return -1;
+        if (f == true)
+            cnt += 1;
+        return cnt;
     }
 }
