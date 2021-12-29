@@ -3,7 +3,7 @@ package DataStructures.Tree;
 /*
 //  Problem link: https://practice.geeksforgeeks.org/problems/nodes-at-given-distance-in-binary-tree/1
 //  Video Solution : https://youtu.be/i9ORlEy6EsI
-//  Video Solution : https://youtu.be/s22QClql9LU
+//  Video Solution (used for this code): https://youtu.be/s22QClql9LU
  */
 
 import java.util.*;
@@ -22,69 +22,76 @@ public class NodesAtKDistance {
     static int i = 0;
 
     public static void main(String[] args) {
-        Node root = new Node(20);
-        root.left = new Node(8);
-        root.right = new Node(22);
+//        Node root = new Node(20);
+//        root.left = new Node(8);
+//        root.right = new Node(22);
+//        root.left.left = new Node(4);
+//        root.left.right = new Node(12);
+//        root.left.right.left = new Node(10);
+//        root.left.right.right = new Node(14);
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
         root.left.left = new Node(4);
-        root.left.right = new Node(12);
-        root.left.right.left = new Node(10);
-        root.left.right.right = new Node(14);
+        root.left.right = new Node(5);
+        root.right.right = new Node(6);
 
-        int target = 8;
-        int k = 2;
+        int target = 6;
+        int k = 4;
 
-        findPath(root,target,rootToNode);
-        for(int j=0;j<rootToNode.size();j++){
-            System.out.print(rootToNode.get(j).data+" ");
+        ArrayList<Integer> nodes = new ArrayList<>();
+        distanceK(root,target,k,nodes);
+        for(int i=0;i<nodes.size();i++)
+        {
+            System.out.print(nodes.get(i)+" ");
         }
-        System.out.println();
-        ArrayList<Integer> pathAtDistanceK = new ArrayList<>();
 
-        NodesAtKDistance(root,null,k,pathAtDistanceK);
-        System.out.println(pathAtDistanceK);
     }
 
-    //To find target node to root path
-    public static boolean findPath(Node root,int target, ArrayList<Node> path){
-        if(root == null) return false;
-
-        if(root.data == target){
-            path.add(root);
-            return true;
+    public static int distanceK(Node root,int target,int k,ArrayList<Integer> path)
+    {
+        if(root == null)
+        {
+            return -1;
         }
 
-        if(findPath(root.left,target,path)){
-            path.add(root);
-            return true;
+        if(root.data == target)
+        {
+            kdown(root,null,k,path);
+            return 1;
         }
 
-        if(findPath(root.right,target,path)){
-            path.add(root);
-            return true;
+        int left_dist = distanceK(root.left,target,k,path);
+        if(left_dist != -1)
+        {
+            kdown(root,root.left,k-left_dist,path);
+            return 1+left_dist;
         }
 
+        int right_dist = distanceK(root.right,target,k,path);
+        if(right_dist != -1)
+        {
+            kdown(root,root.right,k-right_dist,path);
+            return 1+right_dist;
+        }
 
-        return false;
+        return -1;
     }
 
-    //To find Nodes at a distance K from the target node
-    public static void NodesAtKDistance(Node root, Node block,int k,ArrayList<Integer> path){
-        System.out.println("k= "+k+" , root = "+root.data);
-        System.out.println(k);
-
-        if(root == null || root == block || k < 0){
+    public static void kdown(Node root,Node block,int k,ArrayList<Integer> path){
+        if(root == null || root == block || k<0)
+        {
             return;
         }
 
-        if(k==0){
+        if(k==0)
+        {
             path.add(root.data);
             return;
         }
 
-        System.out.println("yes");
-        NodesAtKDistance(root.left,rootToNode.get(i),k-1,path);
-        NodesAtKDistance(root.right,rootToNode.get(i),k-1,path);
-        i++;
+        kdown(root.left,block,k-1,path);
+        kdown(root.right,block,k-1,path);
     }
-
 }
