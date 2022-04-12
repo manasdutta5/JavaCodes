@@ -41,11 +41,11 @@ public class QuickSort {
 
     static int partition(int[] arr,int l,int h){
         int pivot = arr[l];
-        int i = l+1;
+        int i = l;
         int j = h;
 
         while(i<j){
-            while(arr[i]<=pivot) i++;
+            while(i<h && arr[i]<=pivot) i++;
             while(arr[j]>pivot) j--;
             if(i<j)
                 swap(arr,i,j);

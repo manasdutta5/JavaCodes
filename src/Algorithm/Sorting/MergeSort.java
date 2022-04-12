@@ -2,7 +2,8 @@ package Algorithm.Sorting;
 
 import java.util.Scanner;
 
-public class MergeSort {
+public class
+MergeSort {
     public static void main(String[] args) throws Exception{
         Scanner sc = new Scanner(System.in);
 
@@ -44,7 +45,7 @@ public class MergeSort {
 
         int[] res = new int[arr.length];  /* result array containing merged result of two sorted sub-arrays*/
 
-        int i = l;      /* starting index of second sorted sub-array */
+        int i = l;      /* starting index of first sorted sub-array */
         int j = mid+1;  /* starting index of second sorted sub-array */
         int k = l;      /* starting index of sorted result array */
 
