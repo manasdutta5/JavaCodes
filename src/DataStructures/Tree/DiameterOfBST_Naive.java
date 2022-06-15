@@ -29,7 +29,7 @@ public class DiameterOfBST_Naive {
 
     static int findDiameter(Node root,int diameter){
         if(root == null) return 0;
-        int current_diameter = findheight(root.left) + findheight(root.right);
+        int current_diameter = findheight(root.left) + findheight(root.right) + 1;
 
         diameter = Math.max(current_diameter,diameter);
 
