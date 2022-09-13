@@ -1,4 +1,4 @@
-package DataStructures.ArraysAndStrings;
+package DataStructures.Strings;
 
 /*
 // Probllem Link: https://practice.geeksforgeeks.org/problems/multiply-two-strings/1/?company[]=Amazon&company[]=Amazon&problemStatus=unsolved&problemType=functional&page=2&sortBy=submissions&query=company[]AmazonproblemStatusunsolvedproblemTypefunctionalpage2sortBysubmissionscompany[]Amazon
